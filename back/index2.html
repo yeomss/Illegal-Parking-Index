@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form id="form">
+      <input type="file" id="input" />
+      <button id="btn">send</button>
+    </form>
+  </body>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <!-- <script src="node_modules/socketio-file-upload/client.js"></script> -->
+  <script src="/siofu/client.js"></script>
+
+  <script>
+    // var io = require("socket.io");
+    // var socket = io.connect("ws://localhost:3000");
+    // var siofu = new SocketIOFileUpload(socket);
+    // siofu.listenOnInput(document.getElementById("input"));
+
+    // siofu.addEventListener("complete", (e) => {
+    //   console.log(e);
+    // });
+
+    document.getElementById("input").addEventListener("change", (e) => {
+      console.log("file change");
+      fileChosen(e);
+    });
+
+    function fileChosen(e) {
+      var selected = e.target.files[0];
+      var name = selected.name;
+      var size = selected.size;
+      console.log(selected);
+
+      var socket = io.connect("ws://localhost:3002");
+      console.log(socket);
+      let siofu = new SocketIOFileUpload(socket);
+
+      siofu.listenOnInput(document.getElementById("input"));
+
+      siofu.addEventListener("change", function (event) {
+        console.log(event.success);
+
+        console.log("-------------------------------");
+
+        console.log(event.file);
+
+        alert("파일명 : " + event.file.name);
+      });
+    }
+  </script>
+</html>
