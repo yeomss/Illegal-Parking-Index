@@ -1,7 +1,9 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import MainPage from "../components/MainPage.vue";
-import ResultPage from "../components/ResultPage.vue";
+// import ResultPage from "../components/ResultPage.vue";
+import SignUpPage from "../components/SignUpPage.vue";
+import LoginPage from "../components/LoginPage.vue";
 
 Vue.use(VueRouter);
 
@@ -10,15 +12,19 @@ export const router = new VueRouter({
   routes: [
     {
       path: "/",
-      redirect: "/file",
+      redirect: "/home",
     },
     {
-      path: "/file",
+      path: "/home",
       component: MainPage,
     },
     {
-      path: "/result",
-      component: ResultPage,
+      path: "/signup",
+      component: SignUpPage,
+    },
+    {
+      path: "/login",
+      component: LoginPage,
     },
   ],
 });

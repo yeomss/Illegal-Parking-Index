@@ -1,8 +1,6 @@
 <template>
   <div>
-    <h1>민원 데이터 분석</h1>
-    <!-- <input type="file" /> -->
-    <!-- <button>확인</button> -->
+    <h1>불법 주정차</h1>
   </div>
 </template>
 
