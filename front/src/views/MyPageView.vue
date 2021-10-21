@@ -1,6 +1,6 @@
 <template>
   <div>
-    회원가입
+    <h1>마이페이지</h1>
   </div>
 </template>
 
