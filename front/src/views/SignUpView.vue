@@ -3,7 +3,7 @@
     <!-- 배너 -->
     <div class="banner">
       <router-link to="/">
-        <img class="logo" src="../assets/symbol-brand01.png" />
+        <img class="logo" src="../assets/image/symbol-brand01.png" />
       </router-link>
       <div class="title">회원가입</div>
     </div>
@@ -56,6 +56,8 @@ export default {
       email: "",
       authNum: "",
       uAuthNum: "",
+      isAuthOk: false,
+      isOk: false,
     };
   },
 
@@ -65,24 +67,32 @@ export default {
       e.preventDefault();
       console.log("이메일 전송 버튼 클릭");
 
+      // 랜덤 인증 번호 생성
       const randomNumber = (min, max) => {
         var num = Math.floor(Math.random() * (max - min + 1)) + min;
         return num;
       };
 
       this.authNum = randomNumber(111111, 999999);
-      console.log(this.authNum);
 
       var data = { email: this.email, authNum: this.authNum };
       console.log(data);
-      console.log(data.email.indexOf("@"));
-      var mail = data.email.split("@")[1];
-      console.log(mail);
+      var mail = data.email.split("@")[1]; // 뒤에 이메일
 
-      // var url = "http://localhost:8888/signup/email";
-      // axios.post(url, data).then((res) => {
-      //   console.log(res);
-      // });
+      if (mail !== "daum.net") {
+        alert("올바른 이메일을 입력하시오.\nex) korea.com");
+      } else {
+        // post
+        var url = "http://localhost:8888/signup/email";
+        axios
+          .post(url, data)
+          .then((res) => {
+            console.log(res);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
     },
 
     // 인증번호 확인
@@ -96,9 +106,15 @@ export default {
         .post(url, data)
         .then((res) => {
           console.log(res);
+          this.isAuthOk = res.data.result;
+          this.authNum = "";
+          this.uAuthNum = "";
         })
         .catch((err) => {
           console.log(err);
+          this.isAuthOk = false;
+          this.authNum = "";
+          this.uAuthNum = "";
         });
     },
 
@@ -111,6 +127,18 @@ export default {
         email: this.email,
       };
       console.log(data);
+
+      // 인증 번호가 맞다고 나오면 회원가입 post
+      if (this.isAuthOk) {
+        var url = "http://localhost:8888/signup";
+        axios
+          .post(url, data)
+          .then((res) => {
+            console.log(res);
+            this.isAuthOk = false;
+          })
+          .catch((err) => console.log(err));
+      }
     },
   },
 };

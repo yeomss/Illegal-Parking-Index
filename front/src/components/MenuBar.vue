@@ -2,7 +2,7 @@
   <!-- 메뉴바 -->
   <div class="menu">
     <!-- 취소 버튼 -->
-    <img class="cancle" src="../assets/x.png" @click="onClickMenu" />
+    <img class="cancle" src="../assets/image/x.png" @click="onClickMenu" />
     <!-- 메뉴바 뒷 배경 -->
     <div class="shadow"></div>
     <!-- 메뉴바 글자 -->

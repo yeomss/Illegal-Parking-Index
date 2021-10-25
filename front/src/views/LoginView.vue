@@ -3,14 +3,14 @@
     <!-- 배너 -->
     <div class="banner">
       <router-link to="/">
-        <img class="logo" src="../assets/symbol-brand02.png" />
+        <img class="logo" src="../assets/image/symbol-brand02.png" />
       </router-link>
       <div class="title">로그인</div>
     </div>
 
     <!-- 입력란 -->
     <div class="input">
-      <!-- <div class="text">회원가입</div> -->
+      <div class="text">아이디와 비밀번호를 입력해주세요</div>
       <form action="" method="post">
         <input type="text" name="id" placeholder="아이디" v-model="id" />
         <input type="password" name="pw" placeholder="비밀번호" v-model="pw" />
@@ -28,6 +28,8 @@ export default {
     return {
       id: "",
       pw: "",
+      isOk: false,
+      isId: "",
     };
   },
 
@@ -41,12 +43,16 @@ export default {
         pw: this.pw,
       };
       var url = "http://localhost:8888/login";
-      console.log(data);
 
       axios
         .post(url, data)
         .then((res) => {
-          console.log(res);
+          if (res.data.result) {
+            alert(`${res.data.id}님 반값습니다.`);
+            document.location.reload();
+          } else {
+            alert("다시 로그인 해주세요");
+          }
         })
         .catch((err) => {
           console.log(err);
@@ -93,15 +99,15 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 60%;
+  height: 55%;
 }
 
 .input .text {
   color: black;
   /* text-shadow: 1px 1px 1px rgb(0, 0, 0); */
-  font-size: 30px;
-  letter-spacing: 5px;
-  font-weight: 600;
+  font-size: 15px;
+  /* letter-spacing: 5px; */
+  /* font-weight: 600; */
   margin: 10px;
 }
 

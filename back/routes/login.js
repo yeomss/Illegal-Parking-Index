@@ -32,12 +32,13 @@ router.post("/", (req, res) => {
   connection.query(query, (err, rows) => {
     if (err) throw err;
     if (rows[0]) {
-      responseData.result = "success";
+      responseData.result = true;
       responseData.id = rows[0].uid;
     } else {
-      responseData.result = "fail";
+      responseData.result = false;
       responseData.id = "none";
     }
+    console.log(responseData);
     res.send(responseData);
   });
 });

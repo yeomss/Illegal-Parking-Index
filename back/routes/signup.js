@@ -77,11 +77,11 @@ router.post("/authNum", (req, res) => {
   if (authNum !== uAuthNum) {
     console.log("인증번호 틀림");
     responseData.message = "인증번호 틀림";
-    responseData.result = "fail";
+    responseData.result = false;
   } else {
     console.log("인증번호 맞음");
     responseData.message = "인증번호 맞음";
-    responseData.result = "success";
+    responseData.result = true;
   }
   res.send(responseData);
 });

@@ -6,7 +6,7 @@
       <!-- 배너 어둡게 -->
       <div class="shadow">
         <router-link to="/">
-          <img class="logo" src="../assets/symbol-brand02.png" />
+          <img class="logo" src="../assets/image/symbol-brand02.png" />
         </router-link>
         <div class="title" @click="onClickMain">부산진구청</div>
         <div class="text" @click="onClickMain">불법 주정차 지수</div>
@@ -66,7 +66,7 @@ export default {
 .main-image {
   width: 100%;
   height: 90%;
-  background: url("../assets/gu2.jpg") no-repeat center;
+  background: url("../assets/image/gu2.jpg") no-repeat center;
   background-position: 0% 28%;
   background-size: cover;
 }
