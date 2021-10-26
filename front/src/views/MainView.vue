@@ -9,7 +9,7 @@
           <img class="logo" src="../assets/image/symbol-brand02.png" />
         </router-link>
         <div class="title" @click="onClickMain">부산진구청</div>
-        <div class="text" @click="onClickMain">불법 주정차 지수</div>
+        <div class="text" @click="onClickMain">불법 주차 지수</div>
       </div>
     </div>
 
@@ -18,10 +18,25 @@
       <!-- 불법주차지수 버튼 -->
       <button-2 class="btn1" :str1="str11" :str2="str12" :url="resultUrl">
       </button-2>
+
       <!-- 회원가입/로그인 버튼 -->
-      <div class="btns">
-        <button-1 :str="str2" :url="signupUrl"></button-1>
-        <button-1 :str="str3" :url="loginUrl"></button-1>
+      <!-- 로그인 상태 -->
+      <div v-if="userToken">
+        <div class="btns">
+          <button-1 :str="str4" :url="mypageUrl"></button-1>
+          <button-1
+            :str="str5"
+            :url="mainUrl"
+            @click.native="onClickLogout"
+          ></button-1>
+        </div>
+      </div>
+      <!-- 로그아웃 상태 -->
+      <div v-else>
+        <div class="btns">
+          <button-1 :str="str2" :url="signupUrl"></button-1>
+          <button-1 :str="str3" :url="loginUrl"></button-1>
+        </div>
       </div>
     </div>
   </div>
@@ -34,19 +49,32 @@ import Button2 from "../components/Button2.vue";
 export default {
   data() {
     return {
+      userToken: false,
       str11: "불법주차지수",
       str12: "보러가기",
       str2: "관리자 회원가입",
       str3: "로그인",
+      str4: "마이페이지",
+      str5: "로그아웃",
       signupUrl: "/signup",
       loginUrl: "/login",
       resultUrl: "/result",
+      mypageUrl: "/mypage",
+      mainUrl: "/",
     };
+  },
+  created() {
+    this.userToken = sessionStorage.getItem("userToken");
   },
   components: { Button1, Button2 },
   methods: {
     onClickMain() {
       document.location.reload("/");
+    },
+    onClickLogout() {
+      sessionStorage.removeItem("userToken");
+      this.userToken = false;
+      window.location.replace("/");
     },
   },
 };

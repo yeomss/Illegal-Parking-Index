@@ -20,7 +20,7 @@
           <input
             type="text"
             name="email"
-            placeholder="이메일"
+            placeholder="busanjingu@daum.net"
             v-model="email"
           />
           <button class="email-btn btn" @click="sendMail">전송</button>
@@ -107,14 +107,10 @@ export default {
         .then((res) => {
           console.log(res);
           this.isAuthOk = res.data.result;
-          this.authNum = "";
-          this.uAuthNum = "";
         })
         .catch((err) => {
           console.log(err);
           this.isAuthOk = false;
-          this.authNum = "";
-          this.uAuthNum = "";
         });
     },
 
@@ -136,8 +132,12 @@ export default {
           .then((res) => {
             console.log(res);
             this.isAuthOk = false;
+            alert("회원가입 완료!");
+            window.location.replace("/login");
           })
           .catch((err) => console.log(err));
+      } else {
+        alert("회원가입 노노");
       }
     },
   },

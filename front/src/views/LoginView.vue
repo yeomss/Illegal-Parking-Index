@@ -49,7 +49,8 @@ export default {
         .then((res) => {
           if (res.data.result) {
             alert(`${res.data.id}님 반값습니다.`);
-            document.location.reload();
+            sessionStorage.setItem("userToken", res.data.id);
+            window.location.replace("/");
           } else {
             alert("다시 로그인 해주세요");
           }
