@@ -7,7 +7,8 @@ const { sendAuthMail } = require("../controller/user");
 var mysql = require("mysql");
 var connection = mysql.createConnection({
   host: "localhost",
-  user: "root",
+  // user: "root",
+  user: "yeom",
   port: 3306,
   password: "0813",
   database: "busanjingu",
@@ -33,7 +34,7 @@ router.post("/", (req, res) => {
   var responseData = {};
 
   // db 중복 확인
-  var query = `select email from user where uid='${id}'`;
+  var query = `select uid from user where uid='${id}'`;
 
   connection.query(query, (err, result) => {
     if (err) throw err;
