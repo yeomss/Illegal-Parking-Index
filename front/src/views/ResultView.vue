@@ -5,7 +5,7 @@
     </router-link>
 
     <div class="container">
-      <div class="text">하이루</div>
+      <!-- <div class="text">하이루</div> -->
       <!--
       <div class="svg">
         <svg class="background"></svg>
@@ -22,9 +22,7 @@
 <script>
 /* eslint-disable no-unused-vars */
 import * as d3 from "d3";
-// import * as topojson from "topojson-client";
-// import jingu from "../assets/json/TL_SCCO_SIG_WGS84.json";
-import jingu from "../assets/json/korea.json";
+import jingu from "../assets/json/jingu_dong.json";
 
 export default {
   created() {},
@@ -114,11 +112,11 @@ export default {
       // console.log(projection);
 
       // 얘는 뭐지?
-      // const color = d3
-      //   .scaleLinear()
-      //   .domain([1, 20])
-      //   .clamp(true)
-      //   .range(["#aa6644", "#ffffff"]);
+      const color = d3
+        .scaleLinear()
+        .domain([1, 20])
+        .clamp(true)
+        .range(["#aa6644", "#ffffff"]);
       // console.log(color);
 
       // const nameLength = (d) => {
@@ -138,7 +136,9 @@ export default {
       // append('path') -> <path></path> 가 g.effect-layer에 넣어진다.
       // 여기서 path는 svg 에서 선을 나타낸다.
       // 그 속성인 d에 path 값을 넣는다. (이때 값이 들어가게 되는것임.)
-      mapLayer
+
+      console.log(jingu.features[0]);
+      var a = mapLayer
         .selectAll("path")
         .data(jingu.features)
         .enter()
@@ -146,12 +146,11 @@ export default {
         .attr("d", path)
         .attr("vector-effect", "non-scaling-stroke");
       // .style("fill", fill);
-      // console.log(a);
+      console.log(a);
 
-      var b = mapLayer
-        .select("path", 0)
-        .classed("seoul", true)
-        .attr("style", "transition: all 0.3s");
+      console.log(mapLayer.selectAll("path"));
+      var b = mapLayer.select("path", 0).attr("style", "transition: all 0.3s");
+      // .classed("seoul", true)
       // .attr("fill", "aqua")
       // console.log(b);
 
@@ -169,10 +168,10 @@ export default {
         // clicked2(d);
       }
 
-      b.on("mouseover", clicked);
-      b.on("mouseout", () => {
-        console.log("하이루");
-      });
+      // b.on("mouseover", clicked);
+      // b.on("mouseout", () => {
+      //   console.log("하이루");
+      // });
       // b.on("click", clicked);
     },
   },
