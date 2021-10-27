@@ -6,8 +6,8 @@ var path = require("path");
 var mysql = require("mysql");
 var connection = mysql.createConnection({
   host: "localhost",
-  // user: "root",
-  user: "yeom",
+  user: "root",
+  // user: "yeom",
   port: 3306,
   password: "0813",
   database: "busanjingu",
