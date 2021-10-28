@@ -30,7 +30,7 @@
     </div>
 
     <!-- 로그아웃 상태 -->
-    <div v-else>
+    <div v-else class="menu-sub">
       <div class="text">
         <router-link to="/main" @click.native="onClickOneMenu"
           >메인</router-link
@@ -51,49 +51,50 @@
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
-        userToken: false,
-      };
+export default {
+  data() {
+    return {
+      userToken: false,
+    };
+  },
+  created() {
+    this.userToken = sessionStorage.getItem("userToken");
+  },
+  methods: {
+    onClickMenu() {
+      this.$store.dispatch("CLICK_MENU");
     },
-    created() {
-      this.userToken = sessionStorage.getItem("userToken");
+    onClickOneMenu() {
+      this.$store.dispatch("CLICK_MENU");
     },
-    methods: {
-      onClickMenu() {
-        this.$store.dispatch("CLICK_MENU");
-      },
-      onClickOneMenu() {
-        this.$store.dispatch("CLICK_MENU");
-      },
-      onClickLogout() {
-        sessionStorage.removeItem("userToken");
-        this.userToken = false;
-        alert("로그아웃 하였습니다.");
-        window.location.replace("/");
-      },
+    onClickLogout() {
+      sessionStorage.removeItem("userToken");
+      this.userToken = false;
+      alert("로그아웃 하였습니다.");
+      window.location.replace("/");
     },
-  };
+  },
+};
 </script>
 
 <style scoped>
-  .menu {
-    /* display: none; */
-    width: 22%;
-    height: 100%;
-    right: 0;
-    position: fixed;
-    z-index: 100;
-    background-color: #143f80;
-    opacity: 0.95;
-    /* transition: all 0.5s; */
-    /* transform: translateX(-90%); */
-    /* transform: translate(0, 0); */
-    /* transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1); */
-  }
+.menu {
+  /* display: none; */
+  width: 22%;
+  /* width: 300px; */
+  height: 100%;
+  right: 0;
+  position: fixed;
+  z-index: 100;
+  background-color: #143f80;
+  opacity: 0.95;
+  /* transition: all 0.5s; */
+  /* transform: translateX(-90%); */
+  /* transform: translate(0, 0); */
+  /* transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1); */
+}
 
-  /* .menu .shadow {
+/* .menu .shadow {
   padding: 0;
   width: 22%;
   height: 100%;
@@ -103,110 +104,116 @@
   opacity: 0.9;
 } */
 
-  .menu .title {
-    color: white;
-    font-weight: 600;
-    /* font-size: 20px; */
-    text-align: left;
-    padding-top: 20px;
-    padding-left: 55px;
-    cursor: default;
-  }
+.menu .title {
+  color: white;
+  font-weight: 600;
+  /* font-size: 20px; */
+  text-align: left;
+  padding-top: 20px;
+  padding-left: 55px;
+  cursor: default;
+}
 
-  .menu .text {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* padding-left: 30px; */
-    padding-top: 100px;
-  }
+.menu .text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* padding-left: 30px; */
+  /* padding-top: 100px; */
+}
 
-  .menu .text a {
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    font-size: 20px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
-    opacity: 1;
-    cursor: pointer;
-  }
+.menu .text a {
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1.5rem;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  opacity: 1;
+  cursor: pointer;
+}
 
-  .menu .text a:after {
-    display: block;
-    width: 100%;
-    content: "";
-    border-bottom: solid 2px #fff;
-    transform: scaleX(0); /*크기를 0으로 줌으로써 평상시엔 밑줄 없음*/
-    transition: transform 0.2s ease-in-out; /*변형 방식*/
-  }
+.menu .text a:after {
+  display: block;
+  width: 100%;
+  content: "";
+  border-bottom: solid 2px #fff;
+  transform: scaleX(0); /*크기를 0으로 줌으로써 평상시엔 밑줄 없음*/
+  transition: transform 0.2s ease-in-out; /*변형 방식*/
+}
 
-  .menu .text a:hover:after {
-    transform: scaleX(1); /*a 속성에 hover시 기존 크기로*/
-  }
+.menu .text a:hover:after {
+  transform: scaleX(1); /*a 속성에 hover시 기존 크기로*/
+}
 
-  .menu-sub {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    height: 100%;
-  }
+.menu-sub {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  height: 100%;
+  margin-top: 260px;
+}
 
-  .menu-sub .user {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    height: 44px;
-    margin-top: 100px;
-  }
+.menu-sub .user {
+  width: 20%;
+  min-width: 200px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  height: 44px;
+  margin-top: 100px;
+  position: fixed;
+  bottom: 40px;
+}
 
-  .menu-sub .user .settings {
-    color: black;
-    padding: 0;
-    margin: 0;
-    font-size: 40px;
-    cursor: pointer;
-    padding-top: 5px;
-  }
+.menu-sub .user .settings {
+  color: black;
+  padding: 0;
+  margin: 0;
+  font-size: 40px;
+  cursor: pointer;
+  padding-top: 8px;
+}
 
-  .settings:hover {
-    opacity: 0.7;
-  }
+.settings:hover {
+  opacity: 0.7;
+}
 
-  .menu-sub .user .logout {
-    background-color: black;
-    color: white;
-    border-radius: 3px;
-    text-align: center;
-    /* height: 30px; */
-    /* padding: 7px 15px; */
-    /* height: 50px; */
-    /* padding-top: 10px; */
-    padding: 8px 10%;
-    margin-top: 10px;
-    cursor: pointer;
-    transition: all 0.3s;
-  }
+.menu-sub .user .logout {
+  background-color: black;
+  color: white;
+  border-radius: 3px;
+  text-align: center;
+  /* height: 30px; */
+  /* padding: 7px 15px; */
+  /* height: 50px; */
+  /* padding-top: 10px; */
+  padding: 8px 10%;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
 
-  .logout:hover {
-    opacity: 0.7;
-  }
+.logout:hover {
+  opacity: 0.7;
+}
 
-  .menu .cancle {
-    position: fixed;
-    top: 10px;
-    /* right: 22%; */
-    /* right: 310px; */
-    /* padding-right: 500px; */
-    margin-left: 13px;
-    width: 35px;
-    opacity: 0.3;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
+.menu .cancle {
+  position: fixed;
+  top: 10px;
+  /* right: 22%; */
+  /* right: 310px; */
+  /* padding-right: 500px; */
+  margin-left: 13px;
+  width: 35px;
+  opacity: 0.3;
+  cursor: pointer;
+  transition: all 0.2s;
+}
 
-  .menu .cancle:hover {
-    opacity: 1;
-  }
+.menu .cancle:hover {
+  opacity: 1;
+}
 </style>

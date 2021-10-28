@@ -37,14 +37,18 @@ router.post("/", (req, res) => {
   var query = `select uid from user where uid='${id}'`;
 
   connection.query(query, (err, result) => {
-    if (err) throw err;
+    if (err) {
+      console.log(err);
+    }
 
     // db 저장
     if (result.length == 0) {
       var query = `insert into user (uid, password, email) values ('${id}', '${pw}', '${email}');`;
 
       connection.query(query, (err, result) => {
-        if (err) throw err;
+        if (err) {
+          console.log(err);
+        }
         responseData.code = 200;
         responseData.result = "success";
         responseData.message = "회원가입 성공!";

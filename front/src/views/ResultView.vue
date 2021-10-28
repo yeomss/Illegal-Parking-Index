@@ -41,9 +41,9 @@ export default {
 
       // 현재의 브라우져 크기 계산
       var divWidth = document.querySelector(".container").clientWidth;
-      var width = divWidth < 1000 ? divWidth * 0.9 : 700;
+      var width = divWidth < 1000 ? divWidth * 0.9 : 1000;
       var divHeight = document.querySelector(".container").clientHeight;
-      var height = divHeight < 1000 ? divHeight * 0.9 : 700;
+      var height = divHeight < 1000 ? divHeight * 0.9 : 1000;
       // console.log(divWidth, width, divHeight, height);
 
       // 지도를 그리기 위한 svg 생성
