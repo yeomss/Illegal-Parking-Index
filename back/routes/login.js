@@ -2,15 +2,15 @@ var express = require("express");
 var app = express();
 var router = express.Router();
 var path = require("path");
-var db = require("../config/db");
+var { dbInfo } = require("../config/db");
 
 var mysql = require("mysql");
 var connection = mysql.createConnection({
-  host: db.host,
-  user: db.user,
-  port: db.port,
-  password: db.password,
-  database: db.database,
+  host: dbInfo.host,
+  user: dbInfo.user,
+  port: dbInfo.port,
+  password: dbInfo.password,
+  database: dbInfo.database,
 });
 
 // 로그인 메인
