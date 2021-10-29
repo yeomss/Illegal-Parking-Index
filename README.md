@@ -2,7 +2,7 @@
 ![](https://github.com/dua9920/Illegal-Parking-Index/blob/main/main.png)
 <div align='center'>
   <h3> <b>2021 공공빅데이터 청년인턴십 - 부산진구청 불법주차지수</b> </h3>
-  <h6>시민 편의 웹 사이트</h6>
+  <h6>시민 편의를 위한 웹 사이트</h6>
   <p>👉 부산진구청 소통미디어실</p>
 
 <img src="https://img.shields.io/badge/Vue.js-4FC08D?style=flat-square&logo=Vue.js&logoColor=white"/></a>
