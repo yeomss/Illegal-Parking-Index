@@ -2,16 +2,16 @@ var express = require("express");
 var app = express();
 var router = express.Router();
 var path = require("path");
+var db = require("../config/db");
 const { sendAuthMail } = require("../controller/user");
 
 var mysql = require("mysql");
 var connection = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  // user: "yeom",
-  port: 3306,
-  password: "0813",
-  database: "busanjingu",
+  host: db.host,
+  user: db.user,
+  port: db.port,
+  password: db.password,
+  database: db.database,
 });
 
 connection.connect();
