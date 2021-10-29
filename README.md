@@ -1,5 +1,5 @@
 # 🅿️ Illegal-Parking-Index 
-![](https://github.com/dua9920/Pet-Memory-Planet/blob/main/src/assets/main.png)
+![](https://github.com/dua9920/Illegal-Parking-Index/blob/main/main.png)
 <div align='center'>
   <h3> <b>2021 공공빅데이터 청년인턴십 - 부산진구청 불법주차지수</b> </h3>
   <h6>시민 편의 웹 사이트</h6>
