@@ -17,25 +17,42 @@ export default {
   created() {},
   data() {
     return {
-      test: "",
+      bj1: null, // 부전1동
+      bj2: null, // 부전2동
+      cho: null, // 초읍동
+      ba1: null, // 부암1동
+      ba3: null, // 부암3동
+      dg1: null, // 당감1동
+      dg2: null, // 당감2동
+      dg4: null, // 당감4동
+      gg1: null, // 개금1동
+      gg2: null, // 개금2동
+      gg3: null, // 개금3동
+      gy1: null, // 가야1동
+      gy2: null, // 가야2동
+      bc1: null, // 범천1동
+      bc2: null, // 범천2동
+      yj: null, // 연지동
+      yj1: null, // 양정1동
+      yj2: null, // 양정2동
+      jp1: null, // 전포1동
+      jp2: null, // 전포2동
     };
   },
   mounted() {
     this.drawMap();
-    this.chagne();
+    this.onMouseOver();
   },
   methods: {
-    chagne() {
+    onMouseOver() {
       function clicked(d) {
-        console.log("222");
-        // var tmp = window.getComputedStyle(d.path[0], null).transition;
         d.path[0].setAttribute("fill", "blue");
-        d.path[0].setAttribute("height", 1000);
-        // console.log(d.path);
-        // d.path[0].setAttribute("opacity", 0.5);
+        // d.path[0].setAttribute("height", 1000);
       }
 
-      this.test.on("click", clicked);
+      this.yj.on("click", clicked);
+      this.cho.on("click", clicked);
+      this.yj1.on("click", clicked);
     },
     drawMap() {
       // 맵의 중앙 위경도 찾기
@@ -132,31 +149,18 @@ export default {
         .style("transition", "all 0.3s")
         .attr("fill", "#ccc");
 
-      // var b = mapLayer.select("path", 1);
-      var b = mapLayer.selectAll("path").filter(":nth-child(2)");
-      console.log(b);
-      // var bujeon2 = mapLayer.select("path", 0).classed("bujeon2", true);
-
-      // var yeonji = mapLayer.select("path", 1);
-      // console.log(bujeon2.properties);
-      // .classed("yeonji", true)
-      // .style("transition", "all 0.3s");
-
-      // console.log(mapLayer.selectAll("path"));
-      // var a = mapLayer
-      //   .selectAll("path")
-      //   .select("path", 1)
-      //   .classed("a", true)
-      //   .attr("fill", "aqua")
-      //   .style("transition", "all 0.3s");
-
-      // console.log(mapLayer.selectAll("path")._groups[0][1]);
-      // var yeonji = mapLayer
-      //   .select("path", 1)
-      //   .classed("yeonji", true)
-      //   .style("transition", "all 0.3s");
-
-      this.test = b;
+      this.yj = mapLayer.selectAll("path").filter(":nth-child(2)");
+      this.cho = mapLayer.selectAll("path").filter(":nth-child(3)");
+      this.yj1 = mapLayer.selectAll("path").filter(":nth-child(4)");
+      this.yj2 = mapLayer.selectAll("path").filter(":nth-child(5)");
+      this.jp2 = mapLayer.selectAll("path").filter(":nth-child(6)");
+      this.ba1 = mapLayer.selectAll("path").filter(":nth-child(7)");
+      this.ba3 = mapLayer.selectAll("path").filter(":nth-child(8)");
+      this.dg2 = mapLayer.selectAll("path").filter(":nth-child(9)");
+      this.dg4 = mapLayer.selectAll("path").filter(":nth-child(10)");
+      this.gy2 = mapLayer.selectAll("path").filter(":nth-child(11)");
+      this.gg1 = mapLayer.selectAll("path").filter(":nth-child(12)");
+      this.gg2 = mapLayer.selectAll("path").filter(":nth-child(13)");
 
       function clicked(d) {
         console.log("하이루");
