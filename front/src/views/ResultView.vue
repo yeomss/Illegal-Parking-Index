@@ -40,10 +40,11 @@
       };
     },
     mounted() {
-      this.drawMap();
-      this.onMouseOver();
+      this.drawMap(); // 지도 그리기
+      this.onMouseOver(); // 행정동 마우스 오버시
     },
     methods: {
+      // 행정도 마우스 오버
       onMouseOver() {
         function clicked(d) {
           d.path[0].setAttribute("fill", "blue");
@@ -63,6 +64,11 @@
         this.gg1.on("click", clicked);
         this.gg2.on("click", clicked);
       },
+
+      // 행정동 마우스 아웃
+      onMouseOut() {},
+
+      // 지도 그리기
       drawMap() {
         // 맵의 중앙 위경도 찾기
         var center = d3.geoCentroid(jingu);
