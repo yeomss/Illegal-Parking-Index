@@ -80,7 +80,7 @@ export default {
 <style scoped>
 .menu {
   /* display: none; */
-  width: 22%;
+  width: 20%;
   /* width: 300px; */
   height: 100%;
   right: 0;
@@ -118,7 +118,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* padding-left: 30px; */
+  /* margin-left: -70px; */
   /* padding-top: 100px; */
 }
 
@@ -126,7 +126,7 @@ export default {
   color: white;
   text-align: center;
   text-decoration: none;
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   padding-top: 10px;
   padding-bottom: 10px;
   margin-bottom: 10px;
@@ -153,7 +153,7 @@ export default {
   /* justify-content: center; */
   align-items: center;
   height: 100%;
-  margin-top: 260px;
+  margin-top: 200px;
 }
 
 .menu-sub .user {
