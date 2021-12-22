@@ -266,13 +266,13 @@ export default {
         d.path[0].setAttribute("fill", "#3064af");
         d.path[0].setAttribute(
           "style",
-          "stroke: rgb(240, 238, 238); stroke-width: 2.5; transition: all 0.4s;"
+          "stroke: rgb(240, 238, 238); stroke-width: 2.5; transition: all 0.4s;transform: translateY(-5px);"
         );
 
         iconsLayer
           .append("text")
           .attr("class", "하이루")
-          .attr("x", d.offsetX + 7)
+          .attr("x", d.offsetX + 9)
           .attr("y", d.offsetY)
           .attr("fill", "red")
           .attr("display", "block")
