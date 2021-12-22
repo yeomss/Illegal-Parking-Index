@@ -51,6 +51,7 @@ export default {
         // d.path[0].setAttribute("height", 1000);
       }
 
+      this.bj2.on("click", clicked);
       this.yj.on("click", clicked);
       this.cho.on("click", clicked);
       this.yj1.on("click", clicked);
@@ -60,9 +61,17 @@ export default {
       this.ba3.on("click", clicked);
       this.dg2.on("click", clicked);
       this.dg4.on("click", clicked);
+
       this.gy2.on("click", clicked);
       this.gg1.on("click", clicked);
       this.gg2.on("click", clicked);
+      this.gg3.on("click", clicked);
+      this.dg1.on("click", clicked);
+      this.gy1.on("click", clicked);
+      this.bj1.on("click", clicked);
+      this.jp1.on("click", clicked);
+      this.bc1.on("click", clicked);
+      this.bc2.on("click", clicked);
     },
 
     // 행정동 마우스 아웃
@@ -164,6 +173,7 @@ export default {
         .style("transition", "all 0.3s")
         .attr("fill", "#ccc");
 
+      this.bj2 = mapLayer.selectAll("path").filter(":nth-child(1)");
       this.yj = mapLayer.selectAll("path").filter(":nth-child(2)");
       this.cho = mapLayer.selectAll("path").filter(":nth-child(3)");
       this.yj1 = mapLayer.selectAll("path").filter(":nth-child(4)");
@@ -173,9 +183,17 @@ export default {
       this.ba3 = mapLayer.selectAll("path").filter(":nth-child(8)");
       this.dg2 = mapLayer.selectAll("path").filter(":nth-child(9)");
       this.dg4 = mapLayer.selectAll("path").filter(":nth-child(10)");
+
       this.gy2 = mapLayer.selectAll("path").filter(":nth-child(11)");
       this.gg1 = mapLayer.selectAll("path").filter(":nth-child(12)");
       this.gg2 = mapLayer.selectAll("path").filter(":nth-child(13)");
+      this.gg3 = mapLayer.selectAll("path").filter(":nth-child(14)");
+      this.dg1 = mapLayer.selectAll("path").filter(":nth-child(15)");
+      this.gy1 = mapLayer.selectAll("path").filter(":nth-child(16)");
+      this.bj1 = mapLayer.selectAll("path").filter(":nth-child(17)");
+      this.jp1 = mapLayer.selectAll("path").filter(":nth-child(18)");
+      this.bc1 = mapLayer.selectAll("path").filter(":nth-child(19)");
+      this.bc2 = mapLayer.selectAll("path").filter(":nth-child(20)");
 
       function clicked(d) {
         console.log("하이루");
