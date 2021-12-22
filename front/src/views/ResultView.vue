@@ -41,41 +41,107 @@ export default {
   },
   mounted() {
     this.drawMap(); // 지도 그리기
-    this.onMouseOver(); // 행정동 마우스 오버시
+    // this.onMouseOver(); // 행정동 마우스 오버시
+    // this.onMouseOut(); // 행정동 마우스 아웃시
   },
   methods: {
     // 행정도 마우스 오버
     onMouseOver() {
-      function clicked(d) {
-        d.path[0].setAttribute("fill", "blue");
-        // d.path[0].setAttribute("height", 1000);
+      function onOverMap(d) {
+        // var tmp = window.getComputedStyle(d.path[0], null).transform;
+        // console.log(tmp);
+        d.path[0].setAttribute("fill", "#3064af");
+        d.path[0].setAttribute(
+          "style",
+          "stroke: rgb(240, 238, 238); stroke-width: 2.5; transition: all 0.4s;"
+        );
+        // d.path[0].setAttribute(
+        //   "style",
+        //   "transition: all 0.4s; font-size:20px; color:black; transform: translateY(-7px); z-index:100;"
+        // );
+
+        // console.log(d);
+
+        // var p = document.createElement("p");
+        // var txt = document.createTextNode("하이루");
+        // p.appendChild(txt);
+        // var aa = document.getElementById("app");
+        // aa.innerHTML = "<p style='background-color:transparent'>하이</p>";
+        // console.log(aa);
+        // var div = document.createElement("svg");
+        // var txt = document.createTextNode("하이루");
+        // div.setAttribute(
+        //   "style",
+        //   "position: fixed; top: 0; right:0; color: black;"
+        // );
+        // div.appendChild(txt);
+
+        // d.path[0].appendChild(div);
+
+        // var t = document
+        //   .getElementById("app")
+        //   .getElementsByClassName("container");
+        // t.append(div);
+        // // document.getElementsByClassName(".result").appendChild(div);
+        // // console.log(d.path[0]);
+        // console.log(t);
       }
 
-      this.bj2.on("click", clicked);
-      this.yj.on("click", clicked);
-      this.cho.on("click", clicked);
-      this.yj1.on("click", clicked);
-      this.yj2.on("click", clicked);
-      this.jp2.on("click", clicked);
-      this.ba1.on("click", clicked);
-      this.ba3.on("click", clicked);
-      this.dg2.on("click", clicked);
-      this.dg4.on("click", clicked);
+      this.bj2.on("mouseover", onOverMap);
+      this.yj.on("mouseover", onOverMap);
+      this.cho.on("mouseover", onOverMap);
+      this.yj1.on("mouseover", onOverMap);
+      this.yj2.on("mouseover", onOverMap);
+      this.jp2.on("mouseover", onOverMap);
+      this.ba1.on("mouseover", onOverMap);
+      this.ba3.on("mouseover", onOverMap);
+      this.dg2.on("mouseover", onOverMap);
+      this.dg4.on("mouseover", onOverMap);
 
-      this.gy2.on("click", clicked);
-      this.gg1.on("click", clicked);
-      this.gg2.on("click", clicked);
-      this.gg3.on("click", clicked);
-      this.dg1.on("click", clicked);
-      this.gy1.on("click", clicked);
-      this.bj1.on("click", clicked);
-      this.jp1.on("click", clicked);
-      this.bc1.on("click", clicked);
-      this.bc2.on("click", clicked);
+      this.gy2.on("mouseover", onOverMap);
+      this.gg1.on("mouseover", onOverMap);
+      this.gg2.on("mouseover", onOverMap);
+      this.gg3.on("mouseover", onOverMap);
+      this.dg1.on("mouseover", onOverMap);
+      this.gy1.on("mouseover", onOverMap);
+      this.bj1.on("mouseover", onOverMap);
+      this.jp1.on("mouseover", onOverMap);
+      this.bc1.on("mouseover", onOverMap);
+      this.bc2.on("mouseover", onOverMap);
     },
 
     // 행정동 마우스 아웃
-    onMouseOut() {},
+    onMouseOut() {
+      function onOutMap(d) {
+        d.path[0].setAttribute("fill", "#ccc");
+        d.path[0].setAttribute(
+          "style",
+          "stroke: rgb(240, 238, 238); stroke-width: 2.5; transition: all 0.4s;"
+        );
+      }
+
+      this.bj2.on("mouseout", onOutMap);
+      this.yj.on("mouseout", onOutMap);
+      this.cho.on("mouseout", onOutMap);
+      this.yj1.on("mouseout", onOutMap);
+      this.yj2.on("mouseout", onOutMap);
+      this.jp2.on("mouseout", onOutMap);
+      this.ba1.on("mouseout", onOutMap);
+      this.ba3.on("mouseout", onOutMap);
+      this.dg2.on("mouseout", onOutMap);
+      this.dg4.on("mouseout", onOutMap);
+
+      this.gy2.on("mouseout", onOutMap);
+      this.gg1.on("mouseout", onOutMap);
+      this.gg2.on("mouseout", onOutMap);
+      this.gg3.on("mouseout", onOutMap);
+      this.dg1.on("mouseout", onOutMap);
+      this.gy1.on("mouseout", onOutMap);
+      this.bj1.on("mouseout", onOutMap);
+      this.jp1.on("mouseout", onOutMap);
+      this.bc1.on("mouseout", onOutMap);
+      this.bc2.on("mouseout", onOutMap);
+    },
 
     // 지도 그리기
     drawMap() {
@@ -195,9 +261,98 @@ export default {
       this.bc1 = mapLayer.selectAll("path").filter(":nth-child(19)");
       this.bc2 = mapLayer.selectAll("path").filter(":nth-child(20)");
 
+      // 행정동 마우스 오버
+      function onOverMap(d) {
+        d.path[0].setAttribute("fill", "#3064af");
+        d.path[0].setAttribute(
+          "style",
+          "stroke: rgb(240, 238, 238); stroke-width: 2.5; transition: all 0.4s;"
+        );
+
+        iconsLayer
+          .append("text")
+          .attr("class", "하이루")
+          .attr("x", d.offsetX + 7)
+          .attr("y", d.offsetY)
+          .attr("fill", "red")
+          .attr("display", "block")
+          .attr("font-size", "30px")
+          .attr("cursor", "default")
+          .text(d.target.classList[0]);
+      }
+
+      this.bj2.on("mouseover", onOverMap);
+      this.yj.on("mouseover", onOverMap);
+      this.cho.on("mouseover", onOverMap);
+      this.yj1.on("mouseover", onOverMap);
+      this.yj2.on("mouseover", onOverMap);
+      this.jp2.on("mouseover", onOverMap);
+      this.ba1.on("mouseover", onOverMap);
+      this.ba3.on("mouseover", onOverMap);
+      this.dg2.on("mouseover", onOverMap);
+      this.dg4.on("mouseover", onOverMap);
+
+      this.gy2.on("mouseover", onOverMap);
+      this.gg1.on("mouseover", onOverMap);
+      this.gg2.on("mouseover", onOverMap);
+      this.gg3.on("mouseover", onOverMap);
+      this.dg1.on("mouseover", onOverMap);
+      this.gy1.on("mouseover", onOverMap);
+      this.bj1.on("mouseover", onOverMap);
+      this.jp1.on("mouseover", onOverMap);
+      this.bc1.on("mouseover", onOverMap);
+      this.bc2.on("mouseover", onOverMap);
+
+      // 행정동 마우스 아웃
+      function onOutMap(d) {
+        d.path[0].setAttribute("fill", "#ccc");
+        d.path[0].setAttribute(
+          "style",
+          "stroke: rgb(240, 238, 238); stroke-width: 2.5; transition: all 0.4s;"
+        );
+
+        d3.select(".하이루").remove();
+      }
+
+      this.bj2.on("mouseout", onOutMap);
+      this.yj.on("mouseout", onOutMap);
+      this.cho.on("mouseout", onOutMap);
+      this.yj1.on("mouseout", onOutMap);
+      this.yj2.on("mouseout", onOutMap);
+      this.jp2.on("mouseout", onOutMap);
+      this.ba1.on("mouseout", onOutMap);
+      this.ba3.on("mouseout", onOutMap);
+      this.dg2.on("mouseout", onOutMap);
+      this.dg4.on("mouseout", onOutMap);
+
+      this.gy2.on("mouseout", onOutMap);
+      this.gg1.on("mouseout", onOutMap);
+      this.gg2.on("mouseout", onOutMap);
+      this.gg3.on("mouseout", onOutMap);
+      this.dg1.on("mouseout", onOutMap);
+      this.gy1.on("mouseout", onOutMap);
+      this.bj1.on("mouseout", onOutMap);
+      this.jp1.on("mouseout", onOutMap);
+      this.bc1.on("mouseout", onOutMap);
+      this.bc2.on("mouseout", onOutMap);
+
       function clicked(d) {
         console.log("하이루");
-        var tmp = window.getComputedStyle(d.path[0], null).transition;
+
+        mapLayer
+          .append("text")
+          .text(d.target.classList[0])
+          .attr("x", 100)
+          .attr("y", 100);
+        // var i = iconsLayer
+        //   .append("text")
+        //   .attr("x", d.offsetX)
+        //   .attr("y", d.offsetY)
+        //   .attr("fill", "red")
+        //   .attr("font-size", "30px")
+        //   .text("하이루");
+        console.log(d.target.classList[0]);
+        // var tmp = window.getComputedStyle(d.path[0], null).transition;
         // var tmp2 = window.getComputedStyle(d.path[0], null).backgroundColor;
         // console.log(tmp);
         // var dd = document.getElementsByClassName("seoul")[0];
@@ -207,11 +362,10 @@ export default {
         // console.log(tmp, tmp2);
         // console.log(dd);
         // d.path[0].setAttribute("fill", "blue");
-        d.path[0].setAttribute("opacity", 0.5);
+        // d.path[0].setAttribute("opacity", 0.5);
         // clicked2(d);
       }
-
-      // b.on("mouseover", clicked);
+      // this.bc2.on("click", clicked);
       // b.on("mouseout", () => {
       //   console.log("하이루");
       // });
@@ -230,7 +384,7 @@ export default {
   justify-content: center;
   align-items: center;
   overflow: auto;
-  /* transition: all 0.5s; */
+  z-index: 0;
 }
 
 .logo {
