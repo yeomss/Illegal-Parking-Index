@@ -37,6 +37,28 @@ export default {
       yj2: null, // 양정2동
       jp1: null, // 전포1동
       jp2: null, // 전포2동
+      index: [
+        9.96,
+        4.76,
+        6.01,
+        6.35,
+        4012,
+        4.22,
+        7.03,
+        4.02,
+        2.58,
+        2.52,
+        4.81,
+        4.63,
+        2.46,
+        5.2,
+        4.62,
+        3.65,
+        6.61,
+        5.92,
+        5.7,
+        4.82,
+      ],
     };
   },
   mounted() {
@@ -239,27 +261,105 @@ export default {
         .style("transition", "all 0.3s")
         .attr("fill", "#ccc");
 
-      this.bj2 = mapLayer.selectAll("path").filter(":nth-child(1)");
-      this.yj = mapLayer.selectAll("path").filter(":nth-child(2)");
-      this.cho = mapLayer.selectAll("path").filter(":nth-child(3)");
-      this.yj1 = mapLayer.selectAll("path").filter(":nth-child(4)");
-      this.yj2 = mapLayer.selectAll("path").filter(":nth-child(5)");
-      this.jp2 = mapLayer.selectAll("path").filter(":nth-child(6)");
-      this.ba1 = mapLayer.selectAll("path").filter(":nth-child(7)");
-      this.ba3 = mapLayer.selectAll("path").filter(":nth-child(8)");
-      this.dg2 = mapLayer.selectAll("path").filter(":nth-child(9)");
-      this.dg4 = mapLayer.selectAll("path").filter(":nth-child(10)");
+      this.bj2 = mapLayer
+        .selectAll("path")
+        .filter(":nth-child(1)")
+        .attr("index", this.index[0]);
 
-      this.gy2 = mapLayer.selectAll("path").filter(":nth-child(11)");
-      this.gg1 = mapLayer.selectAll("path").filter(":nth-child(12)");
-      this.gg2 = mapLayer.selectAll("path").filter(":nth-child(13)");
-      this.gg3 = mapLayer.selectAll("path").filter(":nth-child(14)");
-      this.dg1 = mapLayer.selectAll("path").filter(":nth-child(15)");
-      this.gy1 = mapLayer.selectAll("path").filter(":nth-child(16)");
-      this.bj1 = mapLayer.selectAll("path").filter(":nth-child(17)");
-      this.jp1 = mapLayer.selectAll("path").filter(":nth-child(18)");
-      this.bc1 = mapLayer.selectAll("path").filter(":nth-child(19)");
-      this.bc2 = mapLayer.selectAll("path").filter(":nth-child(20)");
+      this.yj = mapLayer
+        .selectAll("path")
+        .filter(":nth-child(2)")
+        .attr("index", this.index[1]);
+
+      this.cho = mapLayer
+        .selectAll("path")
+        .filter(":nth-child(3)")
+        .attr("index", this.index[2]);
+
+      this.yj1 = mapLayer
+        .selectAll("path")
+        .filter(":nth-child(4)")
+        .attr("index", this.index[3]);
+
+      this.yj2 = mapLayer
+        .selectAll("path")
+        .filter(":nth-child(5)")
+        .attr("index", this.index[4]);
+
+      this.jp2 = mapLayer
+        .selectAll("path")
+        .filter(":nth-child(6)")
+        .attr("index", this.index[5]);
+
+      this.ba1 = mapLayer
+        .selectAll("path")
+        .filter(":nth-child(7)")
+        .attr("index", this.index[6]);
+
+      this.ba3 = mapLayer
+        .selectAll("path")
+        .filter(":nth-child(8)")
+        .attr("index", this.index[7]);
+
+      this.dg2 = mapLayer
+        .selectAll("path")
+        .filter(":nth-child(9)")
+        .attr("index", this.index[8]);
+
+      this.dg4 = mapLayer
+        .selectAll("path")
+        .filter(":nth-child(10)")
+        .attr("index", this.index[9]);
+
+      this.gy2 = mapLayer
+        .selectAll("path")
+        .filter(":nth-child(11)")
+        .attr("index", this.index[10]);
+
+      this.gg1 = mapLayer
+        .selectAll("path")
+        .filter(":nth-child(12)")
+        .attr("index", this.index[11]);
+
+      this.gg2 = mapLayer
+        .selectAll("path")
+        .filter(":nth-child(13)")
+        .attr("index", this.index[12]);
+
+      this.gg3 = mapLayer
+        .selectAll("path")
+        .filter(":nth-child(14)")
+        .attr("index", this.index[13]);
+
+      this.dg1 = mapLayer
+        .selectAll("path")
+        .filter(":nth-child(15)")
+        .attr("index", this.index[14]);
+
+      this.gy1 = mapLayer
+        .selectAll("path")
+        .filter(":nth-child(16)")
+        .attr("index", this.index[15]);
+
+      this.bj1 = mapLayer
+        .selectAll("path")
+        .filter(":nth-child(17)")
+        .attr("index", this.index[16]);
+
+      this.jp1 = mapLayer
+        .selectAll("path")
+        .filter(":nth-child(18)")
+        .attr("index", this.index[17]);
+
+      this.bc1 = mapLayer
+        .selectAll("path")
+        .filter(":nth-child(19)")
+        .attr("index", this.index[18]);
+
+      this.bc2 = mapLayer
+        .selectAll("path")
+        .filter(":nth-child(20)")
+        .attr("index", this.index[19]);
 
       // 행정동 마우스 오버
       function onOverMap(d) {
@@ -271,14 +371,27 @@ export default {
 
         iconsLayer
           .append("text")
-          .attr("class", "하이루")
+          .attr("class", "dong")
           .attr("x", d.offsetX + 9)
           .attr("y", d.offsetY)
           .attr("fill", "red")
           .attr("display", "block")
-          .attr("font-size", "30px")
+          .attr("font-size", "22px")
+          .attr("font-weight", "bold")
           .attr("cursor", "default")
           .text(d.target.classList[0]);
+
+        console.log(d.attributes);
+        iconsLayer
+          .append("text")
+          .attr("class", "illegal-index")
+          .attr("x", d.offsetX + 9)
+          .attr("y", d.offsetY + 20)
+          .attr("fill", "red")
+          .attr("display", "block")
+          .attr("font-size", "20px")
+          .attr("cursor", "default")
+          .text("dks");
       }
 
       this.bj2.on("mouseover", onOverMap);
@@ -311,7 +424,8 @@ export default {
           "stroke: rgb(240, 238, 238); stroke-width: 2.5; transition: all 0.4s;"
         );
 
-        d3.select(".하이루").remove();
+        d3.select(".dong").remove();
+        d3.select(".illegal-index").remove();
       }
 
       this.bj2.on("mouseout", onOutMap);
