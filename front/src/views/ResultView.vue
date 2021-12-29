@@ -42,7 +42,7 @@ export default {
         4.76,
         6.01,
         6.35,
-        4012,
+        4.012,
         4.22,
         7.03,
         4.02,
@@ -366,7 +366,7 @@ export default {
         d.path[0].setAttribute("fill", "#3064af");
         d.path[0].setAttribute(
           "style",
-          "stroke: rgb(240, 238, 238); stroke-width: 2.5; transition: all 0.4s;transform: translateY(-5px);"
+          "stroke: rgb(240, 238, 238); stroke-width: 2.5; transition: all 0.4s;transform: translateY(-5px); "
         );
 
         iconsLayer
@@ -374,24 +374,25 @@ export default {
           .attr("class", "dong")
           .attr("x", d.offsetX + 9)
           .attr("y", d.offsetY)
-          .attr("fill", "red")
+          .attr("fill", "black")
           .attr("display", "block")
-          .attr("font-size", "22px")
+          .attr("font-size", "30px")
           .attr("font-weight", "bold")
           .attr("cursor", "default")
           .text(d.target.classList[0]);
 
-        console.log(d.attributes);
+        // console.log(d.path[0].getAttribute("index"));
         iconsLayer
           .append("text")
           .attr("class", "illegal-index")
           .attr("x", d.offsetX + 9)
-          .attr("y", d.offsetY + 20)
+          .attr("y", d.offsetY + 25)
           .attr("fill", "red")
           .attr("display", "block")
-          .attr("font-size", "20px")
+          .attr("font-size", "25px")
+          .attr("font-weight", "bold")
           .attr("cursor", "default")
-          .text("dks");
+          .text(d.path[0].getAttribute("index"));
       }
 
       this.bj2.on("mouseover", onOverMap);
@@ -450,35 +451,35 @@ export default {
       this.bc1.on("mouseout", onOutMap);
       this.bc2.on("mouseout", onOutMap);
 
-      function clicked(d) {
-        console.log("하이루");
+      // function clicked(d) {
+      //   console.log("하이루");
 
-        mapLayer
-          .append("text")
-          .text(d.target.classList[0])
-          .attr("x", 100)
-          .attr("y", 100);
-        // var i = iconsLayer
-        //   .append("text")
-        //   .attr("x", d.offsetX)
-        //   .attr("y", d.offsetY)
-        //   .attr("fill", "red")
-        //   .attr("font-size", "30px")
-        //   .text("하이루");
-        console.log(d.target.classList[0]);
-        // var tmp = window.getComputedStyle(d.path[0], null).transition;
-        // var tmp2 = window.getComputedStyle(d.path[0], null).backgroundColor;
-        // console.log(tmp);
-        // var dd = document.getElementsByClassName("seoul")[0];
-        // dd.style.transition = "all 0.3s";
-        // tmp = "all 0.3s";
-        // tmp2 = "red";
-        // console.log(tmp, tmp2);
-        // console.log(dd);
-        // d.path[0].setAttribute("fill", "blue");
-        // d.path[0].setAttribute("opacity", 0.5);
-        // clicked2(d);
-      }
+      //   mapLayer
+      //     .append("text")
+      //     .text(d.target.classList[0])
+      //     .attr("x", 100)
+      //     .attr("y", 100);
+      //   // var i = iconsLayer
+      //   //   .append("text")
+      //   //   .attr("x", d.offsetX)
+      //   //   .attr("y", d.offsetY)
+      //   //   .attr("fill", "red")
+      //   //   .attr("font-size", "30px")
+      //   //   .text("하이루");
+      //   console.log(d.target);
+      //   // var tmp = window.getComputedStyle(d.path[0], null).transition;
+      //   // var tmp2 = window.getComputedStyle(d.path[0], null).backgroundColor;
+      //   // console.log(tmp);
+      //   // var dd = document.getElementsByClassName("seoul")[0];
+      //   // dd.style.transition = "all 0.3s";
+      //   // tmp = "all 0.3s";
+      //   // tmp2 = "red";
+      //   // console.log(tmp, tmp2);
+      //   // console.log(dd);
+      //   // d.path[0].setAttribute("fill", "blue");
+      //   // d.path[0].setAttribute("opacity", 0.5);
+      //   // clicked2(d);
+      // }
       // this.bc2.on("click", clicked);
       // b.on("mouseout", () => {
       //   console.log("하이루");
