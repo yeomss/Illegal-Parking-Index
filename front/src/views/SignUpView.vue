@@ -131,7 +131,7 @@ export default {
       console.log(data);
 
       if (this.id == "") {
-        alert("아이디 입력 바람");https://docs.google.com/forms/d/e/1FAIpQLScC9ICvhhMqI5GtWc5z-4sOYoVE5smSPvMNULJNpfJnvLtlqQ/viewform
+        alert("아이디 입력 바람");
       } else if (this.pw == "") {
         alert("비밀번호 입력 바람");
       } else if (this.email == "") {
