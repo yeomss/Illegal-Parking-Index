@@ -2,7 +2,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import MainView from "../views/MainView.vue";
-import ResultView from "../views/ResultView.vue";
+import MapView from "../views/MapView.vue";
 import TResultView from "../views/TResultView.vue";
 import SignUpView from "../views/SignUpView.vue";
 import LoginView from "../views/LoginView.vue";
@@ -31,7 +31,7 @@ export const router = new VueRouter({
     },
     {
       path: "/result",
-      component: ResultView,
+      component: MapView,
     },
     {
       path: "/mypage",

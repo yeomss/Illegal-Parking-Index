@@ -7,7 +7,6 @@ const sendAuthMail = async (email, authNum) => {
     to: email,
     subject: "[부산진구청] 불법주차지수 회원가입 인증 메일 입니다.",
     text: "다음의 인증 번호를 입력해주세요: " + authNum,
-    // html: "<b>흠냐링</b>",
   };
 
   await smtpTransport.sendMail(message, (err, res) => {
