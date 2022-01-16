@@ -3,4 +3,6 @@ module.exports = {
   devServer: {
     overlay: false,
   },
+
+  // lineOnSave: false,
 };
